@@ -2,9 +2,11 @@ const express = require('express')
 const api = express()
 const porta = 80
 
+
+// Rota Padrão
 api.get('/', (req, res) => {
 
-    const rotaPadrao =
+    const response =
     {
         nome_rota: '/',
         codigo_status: '200',
@@ -12,12 +14,13 @@ api.get('/', (req, res) => {
     }
 
     res.status(200)
-    res.json(rotaPadrao)
+    res.json(response)
 })
 
+// Consulta todos os clientes
 api.get('/clientes', (req, res) => {
 
-    const rotaClientes = [
+    const response = [
         {
             nome: 'Maria das Dores',
             cidade: 'Rio de Janeiro',
@@ -35,12 +38,13 @@ api.get('/clientes', (req, res) => {
     ]
 
     res.status(200)
-    res.json(rotaClientes)
+    res.json(response)
 })
 
+// Consulta cliente específico
 api.get('/cliente/cpfcnpj/12345678901', (req, res) => {
 
-    const rotaCienteCpf = [
+    const response = [
         {
             nome: 'Joao da Silva',
             cidade: 'São Paulo',
@@ -51,14 +55,14 @@ api.get('/cliente/cpfcnpj/12345678901', (req, res) => {
     ]
 
     res.status(200)
-    res.json(rotaCienteCpf)
+    res.json(response)
 })
 
 
-
+// Cria usuários
 api.post('/cliente/novo', (req, res) => {
 
-    const rotaCienteCpf = [
+    const response = [
         {
             mensagem: 'Cliente criado com sucesso',
             status: 201
@@ -67,8 +71,42 @@ api.post('/cliente/novo', (req, res) => {
     ]
 
     res.status(201)
-    res.json(rotaCienteCpf)
+    res.json(response)
 })
+
+// Atualiza cliente por cpf
+api.put('/cliente/update/cpfcnpj/12345678901', (req, res) => {
+
+    const response = [
+        {
+            mensagem: 'Dados atualizados com sucesso',
+            status: 200
+        }
+
+    ]
+
+    res.status(200)
+    res.json(response)
+})
+
+// Atualiza cliente por cpf
+api.put('/cliente/update/cpfcnpj/12345678901', (req, res) => {
+
+    const response = [
+        {
+            mensagem: 'Dados atualizados com sucesso',
+            status: 200
+        }
+
+    ]
+
+    res.status(200)
+    res.json(response)
+})
+
+
+
+
 
 
 api.listen(porta, () => {
